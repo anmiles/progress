@@ -1,0 +1,9 @@
+{
+    "version": "1.0.0",
+    "name": "progress",
+    "description": "",
+    "dependencies": {},
+    "author": "Anatoliy Oblauhov",
+    "license": "ISC",
+    "main": "progress.js"
+}
