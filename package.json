@@ -3,7 +3,7 @@
     "name": "progress",
     "description": "",
     "dependencies": {},
-    "author": "Anatoliy Oblauhov",
+    "author": "Anatoliy Oblaukhov",
     "license": "ISC",
     "main": "progress.js"
 }
