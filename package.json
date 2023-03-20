@@ -2,9 +2,6 @@
     "version": "1.0.0",
     "name": "progress",
     "description": "",
-    "dependencies": {
-        "cursor": "file:../cursor"
-    },
     "author": "Anatoliy Oblaukhov",
     "license": "ISC",
     "main": "progress.js"

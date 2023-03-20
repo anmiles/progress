@@ -1,4 +1,4 @@
-const cursor = require('cursor');
+const cursor = require('../cursor');
 
 class ProgressBar {
     count = 0;
