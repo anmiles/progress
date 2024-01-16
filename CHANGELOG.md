@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0](../../tags/v2.0.0) - 2024-01-16
 ### Changed
 - Update project configurations
-- Updated dependencies
+- Update dependencies
 
 ## [1.0.0](../../tags/v1.0.0) - 2024-01-03
 ### Changed
