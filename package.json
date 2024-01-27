@@ -2,7 +2,10 @@
   "name": "@anmiles/progress",
   "version": "2.0.0",
   "description": "Showing progress of repeating actions",
-  "keywords": [],
+  "keywords": [
+    "progress",
+    "console"
+  ],
   "author": "Anatoliy Oblaukhov",
   "homepage": "https://gitlab.com/anmiles/lib/progress",
   "repository": "gitlab:anmiles/lib/progress",
