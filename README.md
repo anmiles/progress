@@ -1,6 +1,6 @@
 # @anmiles/progress
 
-Showing progress of repeating actions
+Show progress of repeating actions
 
 ----
 
