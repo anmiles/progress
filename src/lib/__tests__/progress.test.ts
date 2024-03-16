@@ -1,14 +1,14 @@
-import { log, info } from '@anmiles/logger';
+import type { log, info } from '@anmiles/logger';
 import { Progress } from '../progress';
 
-type Logs = {
-	log?: any[],
-	info?: any[],
-};
+interface Logs {
+	log?  : unknown[];
+	info? : unknown[];
+}
 
-jest.mock<Partial<{ log: typeof log, info: typeof info }>>('@anmiles/logger', () => ({
-	log  : jest.fn().mockImplementation((...data: any[]) => (logs.log ||= []).push(...data)),
-	info : jest.fn().mockImplementation((...data: any[]) => (logs.info ||= []).push(...data)),
+jest.mock<Partial<{ log : typeof log; info : typeof info }>>('@anmiles/logger', () => ({
+	log  : jest.fn().mockImplementation((...data: unknown[]) => (logs.log ||= []).push(...data)),
+	info : jest.fn().mockImplementation((...data: unknown[]) => (logs.info ||= []).push(...data)),
 }));
 
 const logs: Logs = {};
@@ -18,14 +18,16 @@ beforeEach(() => {
 	delete logs.info;
 });
 
-function generateProgress(count: number, limit?: number) {
+function generateProgress(count: number, limit?: number): void {
 	const items = Array(count).fill(0);
 
 	const progress = limit
 		? new Progress('Processing items', items, { limit })
 		: new Progress('Processing items', items);
 
-	items.forEach(() => progress.tick());
+	items.forEach(() => {
+		progress.tick();
+	});
 }
 
 describe('src/lib/progress', () => {

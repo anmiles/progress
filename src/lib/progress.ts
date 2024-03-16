@@ -1,12 +1,12 @@
 import { log, info } from '@anmiles/logger';
 
-export class Progress {
-	message: string;
-	count: number;
-	throttle: number;
-	index: number;
+class Progress {
+	message  : string;
+	count    : number;
+	throttle : number;
+	index    : number;
 
-	constructor(message: string, items: any[], options?: { limit: number }) {
+	constructor(message: string, items: unknown[], options?: { limit : number }) {
 		const limit = options?.limit ?? 10;
 		this.index  = 0;
 
@@ -19,7 +19,7 @@ export class Progress {
 		info(`${this.message}...`);
 	}
 
-	tick() {
+	tick(): void {
 		this.index++;
 
 		if (this.throttle === 1 || (this.index - 1) % this.throttle === 0 || this.index === this.count) {
@@ -27,3 +27,5 @@ export class Progress {
 		}
 	}
 }
+
+export { Progress };
