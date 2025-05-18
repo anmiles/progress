@@ -1,15 +1,15 @@
-import type { log, info } from '@anmiles/logger';
+import { info, log } from '@anmiles/logger';
+
 import { Progress } from '../progress';
 
 interface Logs {
-	log?  : unknown[];
-	info? : unknown[];
+	log?: unknown[];
+	info?: unknown[];
 }
 
-jest.mock<Partial<{ log : typeof log; info : typeof info }>>('@anmiles/logger', () => ({
-	log  : jest.fn().mockImplementation((...data: unknown[]) => (logs.log ||= []).push(...data)),
-	info : jest.fn().mockImplementation((...data: unknown[]) => (logs.info ||= []).push(...data)),
-}));
+jest.mock('@anmiles/logger');
+jest.mocked(info).mockImplementation((...data: unknown[]) => (logs.info ||= []).push(...data));
+jest.mocked(log).mockImplementation((...data: unknown[]) => (logs.log ||= []).push(...data));
 
 const logs: Logs = {};
 
@@ -37,8 +37,8 @@ describe('src/lib/progress', () => {
 				generateProgress(10);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/10)...',
 						'Processing items (2/10)...',
 						'Processing items (3/10)...',
@@ -57,8 +57,8 @@ describe('src/lib/progress', () => {
 				generateProgress(8);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/8)...',
 						'Processing items (2/8)...',
 						'Processing items (3/8)...',
@@ -77,8 +77,8 @@ describe('src/lib/progress', () => {
 				generateProgress(11);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/11)...',
 						'Processing items (3/11)...',
 						'Processing items (5/11)...',
@@ -93,8 +93,8 @@ describe('src/lib/progress', () => {
 				generateProgress(12);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/12)...',
 						'Processing items (3/12)...',
 						'Processing items (5/12)...',
@@ -110,8 +110,8 @@ describe('src/lib/progress', () => {
 				generateProgress(19);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/19)...',
 						'Processing items (3/19)...',
 						'Processing items (5/19)...',
@@ -130,8 +130,8 @@ describe('src/lib/progress', () => {
 				generateProgress(20);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/20)...',
 						'Processing items (4/20)...',
 						'Processing items (7/20)...',
@@ -148,8 +148,8 @@ describe('src/lib/progress', () => {
 				generateProgress(30);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/30)...',
 						'Processing items (5/30)...',
 						'Processing items (9/30)...',
@@ -173,8 +173,8 @@ describe('src/lib/progress', () => {
 				generateProgress(4, limit);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/4)...',
 						'Processing items (2/4)...',
 						'Processing items (3/4)...',
@@ -187,8 +187,8 @@ describe('src/lib/progress', () => {
 				generateProgress(3, limit);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/3)...',
 						'Processing items (2/3)...',
 						'Processing items (3/3)...',
@@ -202,8 +202,8 @@ describe('src/lib/progress', () => {
 				generateProgress(5, limit);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/5)...',
 						'Processing items (3/5)...',
 						'Processing items (5/5)...',
@@ -215,8 +215,8 @@ describe('src/lib/progress', () => {
 				generateProgress(6, limit);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/6)...',
 						'Processing items (3/6)...',
 						'Processing items (5/6)...',
@@ -229,8 +229,8 @@ describe('src/lib/progress', () => {
 				generateProgress(7, limit);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/7)...',
 						'Processing items (3/7)...',
 						'Processing items (5/7)...',
@@ -243,8 +243,8 @@ describe('src/lib/progress', () => {
 				generateProgress(8, limit);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/8)...',
 						'Processing items (4/8)...',
 						'Processing items (7/8)...',
@@ -257,8 +257,8 @@ describe('src/lib/progress', () => {
 				generateProgress(12, limit);
 
 				expect(logs).toEqual({
-					info : [ 'Processing items...' ],
-					log  : [
+					info: [ 'Processing items...' ],
+					log : [
 						'Processing items (1/12)...',
 						'Processing items (5/12)...',
 						'Processing items (9/12)...',

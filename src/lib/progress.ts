@@ -1,12 +1,12 @@
-import { log, info } from '@anmiles/logger';
+import { info, log } from '@anmiles/logger';
 
-class Progress {
-	message  : string;
-	count    : number;
-	throttle : number;
-	index    : number;
+export class Progress {
+	message: string;
+	count: number;
+	throttle: number;
+	index: number;
 
-	constructor(message: string, items: unknown[], options?: { limit : number }) {
+	constructor(message: string, items: unknown[], options?: { limit: number }) {
 		const limit = options?.limit ?? 10;
 		this.index  = 0;
 
@@ -27,5 +27,3 @@ class Progress {
 		}
 	}
 }
-
-export { Progress };
